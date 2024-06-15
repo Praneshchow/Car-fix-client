@@ -16,8 +16,14 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         {
-            user?.email? <li><button onClick={handleLogOut}>Log Out</button></li> :
-            <li><Link to="/login">Log In</Link></li>
+            user?.email ? <>
+                <li><button onClick={handleLogOut}>Log Out</button></li>
+                <li><Link to="/bookings">My Bookings</Link></li>
+            </>
+                : <>
+                    <li><Link to="/login">Log In</Link></li>
+                    <li><Link to="/signup">Sign Up</Link></li>
+                </>
         }
     </>
     return (

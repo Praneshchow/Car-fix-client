@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
-
-const Checkout = () => {
+const BookService = () => {
     const service = useLoaderData();
     const { title, _id, price, img } = service;
     const { user } = useContext(AuthContext);
@@ -34,13 +33,13 @@ const Checkout = () => {
             },
             body: JSON.stringify(booking)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.insertedId){
-                alert('service book successfully');
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    alert('service book successfully');
+                }
+            })
     }
 
     return (
@@ -85,4 +84,4 @@ const Checkout = () => {
     );
 };
 
-export default Checkout;
+export default BookService;
