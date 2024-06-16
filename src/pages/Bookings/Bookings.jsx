@@ -14,7 +14,7 @@ const Bookings = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setBookings(data))
-    }, [])
+    }, [url])
 
 
     // the handleDelete function call in the 'BookingRow' component.
@@ -30,6 +30,7 @@ const Bookings = () => {
                 console.log(data);
                 if (data.deletedCount > 0){
                     alert('deleted successful');
+                    // delete state. 
                     const remaining = bookings.filter(booking => booking._id !== id);
                     setBookings(remaining);
                 }
@@ -37,6 +38,27 @@ const Bookings = () => {
         }
     }
 
+    const handleBookingConfirm = id => {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status: 'confirm'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.modifiedCount > 0){
+                // update state. 
+                const remaining = bookings.filter(booking => booking._id !== id);
+                const updated = bookings.find(booking => booking._id === id);
+                updated.status = 'confirm';
+                const newBookings = [updated, ...remaining];
+                setBookings(newBookings);
+            }
+        })
+    }
 
     return (
         <div>
@@ -49,7 +71,7 @@ const Bookings = () => {
                         <tr>
                             <th>
                                 <label>
-                                    <input type="checkbox" className="checkbox" />
+                                    
                                 </label>
                             </th>
                             <th>Image</th>
@@ -65,6 +87,7 @@ const Bookings = () => {
                              key={booking._id}
                              booking={booking}
                              handleDelete={handleDelete}
+                             handleBookingConfirm={handleBookingConfirm}
                             ></BookingRow>)
                         }
                     </tbody>
