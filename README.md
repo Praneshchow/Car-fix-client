@@ -28,11 +28,13 @@ JWT: JSON Web Tokens method for representing claims securely between two parties
 
 ### Features: 
 
-* Authentication
-* Private route
+* Authentication (Firebase)
+* Private route and Navigation. 
 * Context API
-* Loader
+* API data load. 
 * Database CRUD Operation. (create, read, update, delete)
+* Security: JWT, dotenv. 
+
 
 
 

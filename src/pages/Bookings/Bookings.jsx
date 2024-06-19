@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import BookingRow from "./BookingRow";
+import { useNavigate } from "react-router-dom";
 
 
 const Bookings = () => {
     const { user } = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
+    const navigate = useNavigate();
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
     // console.log("url is : ", url);
@@ -18,8 +20,19 @@ const Bookings = () => {
             }
         })
             .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [url])
+            .then(data => {
+                // if the token is expired then this will handle. 
+                // console.log(data);
+                if (!data.error){
+                    setBookings(data);
+                }
+                else{
+                    // we can logout and then navigate. but here we navigate to root path. 
+                    navigate('/');
+                    
+                }
+            })
+    }, [url, navigate])
 
 
     // the handleDelete function call in the 'BookingRow' component.
@@ -28,11 +41,10 @@ const Bookings = () => {
         if (proceed){
             fetch(`http://localhost:5000/bookings/${id}`, {
                 method: 'DELETE',
-
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data); 
                 if (data.deletedCount > 0){
                     alert('deleted successful');
                     // delete state. 
