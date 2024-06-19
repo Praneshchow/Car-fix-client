@@ -1,6 +1,6 @@
 # Car Fix Client
 
-Backend repository: 
+Backend repository: https://github.com/Praneshchow/Car-fix-server
 
 Tools and technology: React.js, React Router, Tailwind CSS, DaisyUI, Env Variables and Modes, Firebase.
 
