@@ -44,7 +44,7 @@ const AuthProviders = ({children}) => {
                     email: currentUser.email,
                 }
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://car-fix-server-chi.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -54,7 +54,6 @@ const AuthProviders = ({children}) => {
                 .then(res => res.json())
                 .then(data => {
                     // console.log("jwt response: ", data);
-                    alert("Login Success!");
                     
                     // Warning: Local stroge is not the best (second best place) to store access token. 
                     localStorage.setItem('car-access-token', data.token);
