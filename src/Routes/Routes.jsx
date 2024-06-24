@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         {
           path: 'book/:id',
           element: <PrivateRoute><BookService></BookService></PrivateRoute> ,
-          loader: ({params}) => fetch(`https://car-fix-server-chi.vercel.app/services/${params.id}`)
+          loader: ({params}) => fetch(`https://car-fix-server-six.vercel.app/services/${params.id}`)
         },
         {
           path: 'bookings',

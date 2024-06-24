@@ -44,7 +44,7 @@ const AuthProviders = ({children}) => {
                     email: currentUser.email,
                 }
 
-                fetch('https://car-fix-server-chi.vercel.app/jwt', {
+                fetch('https://car-fix-server-six.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

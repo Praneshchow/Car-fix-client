@@ -26,7 +26,7 @@ const BookService = () => {
 
         console.log(booking);
 
-        fetch('https://car-fix-server-chi.vercel.app/bookings', {
+        fetch('https://car-fix-server-six.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
