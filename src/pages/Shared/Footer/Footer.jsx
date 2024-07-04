@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer p-10 bg-base-200 text-base-content">
             <aside>
                 <img src={logo} alt="" />
-                <p className="text-x1xl">Car Fix <br /> Made by Pranesh Chowdhury</p>
+                <p className="text-x1xl">Car Fix <br /> Developed by Pranesh Chowdhury</p>
             </aside>
             <nav>
                 <h6 className="footer-title">Services</h6>
