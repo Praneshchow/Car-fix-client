@@ -60,7 +60,9 @@ If I want to update the project. Just 2 steps to follow: build project, then aga
 <hr>
 
 
+## Update (Note): 
 
+* I updated the project's security and dependency quality by reducing vulnerabilities from 71 to 3. Updated Vite, React Router and development packages, resolved dependency conflicts and maintained compatibility with React 18 without introducing breaking changes. 
 
 
 
